@@ -1,6 +1,6 @@
 from pygame import *
 
-def BOX(surface,rect,color,radius=0.4, number):
+def BOX(surface,rect,color,radius,number):
     """
     AAfilledRoundedRect(surface,rect,color,radius=0.4)
 
@@ -34,7 +34,7 @@ def BOX(surface,rect,color,radius=0.4, number):
 
     rectangle.fill(color,special_flags=BLEND_RGBA_MAX)
     rectangle.fill((255,255,255,alpha),special_flags=BLEND_RGBA_MIN)
-    textSurf = BASICFONT.render(str(number), True, TEXTCOLOR)
+#textSurf = BASICFONT.render(str(number), True, TEXTCOLOR)
     return surface.blit(rectangle,pos)
 
 def MATRIX():
