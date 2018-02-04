@@ -1,0 +1,2 @@
+def getMove(brd):
+    pass
