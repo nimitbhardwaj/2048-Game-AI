@@ -5,13 +5,12 @@ This class handles the actual rendering of a game, and the game logic."""
 import os
 import random
 import sys
-
 import pygame
 
 try:
-    from utils import load_font, center
+    from utils import load_font, center, BOX
 except ImportError:
-    from .utils import load_font, center
+    from .utils import load_font, center, BOX
 
 if sys.version_info[0] < 3:
     range = xrange
@@ -183,7 +182,8 @@ class Game2048(object):
     def _make_tile(self, value, background, text):
         """Renders a tile, according to its value, and background and foreground colours."""
         tile = pygame.Surface((self.cell_width, self.cell_height), pygame.SRCALPHA)
-        pygame.draw.rect(tile, background, (0, 0, self.cell_width, self.cell_height))
+        BOX(tile, (0, 0, self.cell_width, self.cell_height), background, 0.4)
+        #pygame.draw.rect(tile, background, (0, 0, self.cell_width, self.cell_height))
         # The "zero" tile doesn't have anything inside.
         if value:
             label = load_font(self.BOLD_NAME, 50 if value < 1000 else

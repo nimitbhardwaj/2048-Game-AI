@@ -15,7 +15,7 @@ except ImportError:
     from .manager import GameManager
     from .ai import getMove
 
-def run_game(game_class=Game2048, title='2048: In Python!', data_dir=None):
+def run_game(game_class=Game2048, title='2048', data_dir=None):
     pygame.init()
     pygame.display.set_caption(title)
 
