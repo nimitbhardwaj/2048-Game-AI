@@ -55,6 +55,23 @@ def score(grid):
 				b += abs(grid[i][j] - grid[i][j + 1])
 	return (a - b)
 
+def bestMove(grid, depth, isMaxi):
+	curr = 'left'
+	score = 0
+	lscore = expectimax(move_left(grid), depth, isMaxi)
+	rscore = expectimax(move_left(grid), depth, isMaxi)
+	uscore = expectimax(move_left(grid), depth, isMaxi)
+	dscore = expectimax(move_left(grid), depth, isMaxi)
+	if lscore > score:
+		curr, score = 'left', lscore
+	if rscore > score:
+		curr, score = 'right', rscore
+	if uscore > score:
+		curr, score = 'up', uscore
+	if dscore > score:
+		curr, score = 'down', dscore
+	return curr
+
 def expectimax(grid, depth, isMaxi):
 	if depth == 0:
 		return score(grid)
@@ -87,7 +104,7 @@ def main():
 		l = map(int, input().split())
 		matrix.append(l)
 	while !isOver(matrix):
-		nextMove = expectimax(matrix, 6, 1)
+		nextMove = bestMove(matrix, 6, 1)
 		matrix = move(nextMove)
 
 	## game over and score is %d.
